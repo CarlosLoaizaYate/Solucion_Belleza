@@ -21,12 +21,6 @@ namespace Api.Services
         public Order? GetId(Guid id)
         {
             IEnumerable<Order> orderCurrent = context.orders.Include(x => x.Product).Where(x => x.OrderId == id);
-
-            //Order order = orderCurrent.FirstOrDefault();
-            //foreach (var item in orderCurrent)
-            //{
-
-            //}
             return orderCurrent.FirstOrDefault();
         }
 
