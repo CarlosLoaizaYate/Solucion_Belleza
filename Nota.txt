@@ -1,0 +1,1 @@
+La base de datos se crea a partir del metodo expuesto en el api controlador de WeatherForecast metodo /WeatherForecast/CreateDb
