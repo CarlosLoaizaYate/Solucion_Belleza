@@ -1,0 +1,54 @@
+﻿@page "/orderdetail"
+@page "/orderdetail/{id}"
+
+
+@if (string.IsNullOrEmpty(id))
+{
+    <PageTitle>Crear nueva orden</PageTitle>
+    <h3>Crear nueva orden</h3>
+}
+else
+{
+    <PageTitle>Administrar orden</PageTitle>
+    <h3>Administrar orden</h3>
+}
+<div class="row">
+    <EditForm Model="@order" OnValidSubmit="@HandleValidRequest" OnInvalidSubmit="@HandleFailedRequest">
+        <div class="form-group">
+            <label class="col-md-3"> Producto</label>
+            @*@if (order.Product != null)
+            {
+                <InputText class="col-md-8 form-control" @bind-Value="@order.Product.Name"></InputText>
+            }
+            else
+            {}*@
+                <InputSelect class="col-md-8 form-control" @bind-Value="@orderProducId">
+                    <option value="">Seleccione una opción</option>
+
+                    @foreach (var item in products)
+                    {
+                        <option value="@item.ProductId">@item.Name</option>
+                    }
+                </InputSelect>
+              
+            
+
+        </div>
+        <div class="form-group">
+            <label class="col-md-3"> Cantidad</label>
+            <InputNumber class="col-md-8 form-control" @bind-Value="@order.Quantity"></InputNumber>
+        </div>
+        <br />
+        <div class="form-group">
+            <button type="submit" class="btn btn-warning">Guardar Producto</button>
+            <a @onclick="@GoToProducts" class="btn btn-primary">Regresar</a>
+            @if (!string.IsNullOrEmpty(id))
+            {
+                <a @onclick="@DeleteProduct" class="btn btn-danger">Eliminar Producto</a>
+            }
+        </div>
+        <br />
+        <p style="color:red">@Message</p>
+    </EditForm>
+
+</div>

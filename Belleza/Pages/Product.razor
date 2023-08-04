@@ -1,0 +1,42 @@
+﻿@page "/product"
+<PageTitle>Productos</PageTitle>
+
+<h3>Bienvenido a la sección de productos</h3>
+
+<a href="@($"ProductDetail")" class="btn btn-success">Agregar nuevo producto</a>
+<table>
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Descripcion
+            </th>
+            <th>
+                Fecha creacion
+            </th>
+            <th>
+                Administrar
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in _products)
+        {
+            <tr>
+                <td>@item.ProductId</td>
+                <td>@item.Name</td>
+                <td>@item.Description</td>
+                <td>@item.CreationDate</td>
+                <td><a href="@($"ProductDetail/{item.ProductId}")" class="btn btn-warning">Editar</a></td>
+
+
+            </tr>
+        }
+
+    </tbody>
+</table>

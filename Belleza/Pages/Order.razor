@@ -1,0 +1,42 @@
+﻿@page "/order"
+<PageTitle>Ordenes</PageTitle>
+
+<h3>Bienvenido a la sección de ordenes</h3>
+
+<a href="@($"OrderDetail")" class="btn btn-success">Agregar nueva orden</a>
+<table>
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Producto
+            </th>
+            <th>
+                Cantidad
+            </th>
+            <th>
+                Fecha creacion
+            </th>
+            <th>
+                Administrar
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in _orders)
+        {
+            <tr>
+                <td>@item.OrderId</td>
+                <td>@item.Product.Name</td>
+                <td>@item.Quantity</td>
+                <td>@item.CreationDate</td>
+                <td><a href="@($"OrderDetail/{item.OrderId}")" class="btn btn-warning">Editar</a></td>
+
+
+            </tr>
+        }
+
+    </tbody>
+</table>
